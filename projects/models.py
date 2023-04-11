@@ -6,4 +6,4 @@ class Project(models.Model):
     description = models.CharField(max_length=700)
 
     def __str__(self):
-        return (f"Project Title: {self.title} \nDescription: {self.description}")
+        return self.title

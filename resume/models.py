@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 class Skill(models.Model):
@@ -14,9 +15,11 @@ class Language(models.Model):
         return self.language
 
 class Experience(models.Model):
-    date = models.DateField()
+    startDate = models.DateField(default=date(2001,9,7))
+    endDate = models.DateField(default=date(2007,9,27))
     role = models.CharField(max_length=700)
-    location = models.CharField(max_length=200)
+    organization = models.CharField(max_length=256, default="SARCS")
+    location = models.CharField(max_length=200, default="Remote")
     details = models.CharField(max_length=700)
     status = models.BooleanField()
 
@@ -36,16 +39,19 @@ class Experience(models.Model):
     #         self.status = False
 
     def __str__(self):
-        return (f"Role: {self.role}  - Date: {self.date} \nDetails: {self.details}")
+        return (f"Role: {self.role} - Organization: {self.organization} \nDetails: {self.details}")
 
 class Education(models.Model):
-    date = models.DateField()
+    startDate = models.DateField(default=date(2001,9,7))
+    endDate = models.DateField(default=date(2007,9,27))
     institution = models.CharField(max_length=256)
-    course = models.CharField   (max_length=256)
+    location = models.CharField(max_length=500)
+    degree = models.CharField(max_length=256)
+    fieldOfStudy = models.CharField(max_length=256, default="Computer Science")
     status = models.BooleanField()
 
     def __str__(self):
-        return (f"Institution: {self.institution} - Date: {self.date} \nCourse: {self.course}")
+        return (f"Institution: {self.institution} - {self.location}   \nCourse: {self.fieldOfStudy}")
 
 
 
