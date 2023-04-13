@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "olayinka",
     "resume",
     "projects",
+    # "projects.apps.ProjectsConfig",
     "contact",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -80,8 +81,13 @@ WSGI_APPLICATION = "portfolio.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        # "ENGINE": "django.db.backends.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        # "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "Xy1m1K^o01!",
+        "HOST": "localhost"
     }
 }
 
@@ -120,9 +126,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "assets")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type
